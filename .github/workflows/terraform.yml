@@ -1,6 +1,10 @@
 name: Terraform Deploy
 
-on: push
+on:
+  push:
+    paths:
+      - 'output/generated_tf/**'
+      - '.github/workflows/terraform.yml'
 
 jobs:
   terraform:
