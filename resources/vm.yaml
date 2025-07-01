@@ -1,5 +1,5 @@
 app:
-  name: vm-demo1
+  name: vm-demo2
   region: us-central1
   components:
     - type: compute_instance
