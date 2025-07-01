@@ -19,6 +19,7 @@ from diagrams import Diagram
 from diagrams.gcp.compute import ComputeEngine
 from diagrams.gcp.network import VPC
 from diagrams.gcp.database import SQL
+from diagrams.gcp.iam import ServiceAccount
 
 def generate_diagram(components, filename="output/architecture"):
     with Diagram("GCP Architecture", outfilename=filename, show=False):
@@ -31,7 +32,7 @@ def generate_diagram(components, filename="output/architecture"):
             elif c['type'] == 'vpc':
                 nodes[c['name']] = VPC(c['name'])
             elif c['type'] == 'sa':
-                nodes[c['name']] = sa(c['name'])    
+                nodes[c['name']] = ServiceAccount(c['name'])    
 
         for i in range(len(components) - 1):
             nodes[components[i]['name']] >> nodes[components[i + 1]['name']]
