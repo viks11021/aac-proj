@@ -1,0 +1,12 @@
+resource "google_service_account" "{{ component.name }}" {
+  account_id   = "{{ component.name }}"
+  display_name = "{{ component.display_name }}"
+}
+
+{% for role in component.roles %}
+resource "google_project_iam_member" "{{ component.name }}_{{ loop.index }}" {
+  project = var.project_id
+  role    = "{{ role }}"
+  member  = "serviceAccount:${google_service_account.{{ component.name }}.email}"
+}
+{% endfor %}

@@ -7,3 +7,10 @@ app:
       machine_type: e2-micro
       zone: us-central1-a
       image: debian-cloud/debian-11
+
+    - type: service_account
+      name: demo-sa
+      display_name: "Demo Service Account"
+      roles:
+        - roles/storage.admin
+        - roles/compute.viewer  
