@@ -4,7 +4,7 @@ from diagrams.gcp.network import VPC
 from diagrams.gcp.database import SQL
 
 def generate_diagram(components, filename="output/architecture"):
-    with Diagram("GCP Architecture", outfilename=filename, show=False):
+    with Diagram("GCP Architecture", filename=filename, show=False):
         nodes = {}
         for c in components:
             if c['type'] == 'compute_instance':

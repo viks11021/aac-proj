@@ -25,7 +25,7 @@ jobs:
       run: |
         echo "${GOOGLE_CREDENTIALS}" > credentials.json
         gcloud auth activate-service-account --key-file=credentials.json
-        gcloud config set project YOUR_GCP_PROJECT_ID
+        gcloud config set project arch-as-a-code
 
     - name: Init Terraform
       working-directory: output/generated_tf

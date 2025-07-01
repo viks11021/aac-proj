@@ -4,7 +4,7 @@ from generator import generate_component
 from diagram import generate_diagram
 
 def main():
-    config = load_architecture_config("examples/sample_vm.yaml")
+    config = load_architecture_config("resources/vm.yaml")
     components = config["app"]["components"]
 
     output_dir = "output/generated_tf"
@@ -42,7 +42,7 @@ variable \"zone\" {}
 
     # Write terraform.tfvars
     with open(f"{output_dir}/terraform.tfvars", "w") as f:
-        f.write(f"""project_id = \"YOUR_GCP_PROJECT_ID\"
+        f.write(f"""project_id = \"arch-as-a-code\"
 region     = \"{config['app']['region']}\"
 zone       = \"{components[0]['zone']}\"
 """)
