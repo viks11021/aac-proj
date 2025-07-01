@@ -3,7 +3,7 @@ name: Generate Terraform from YAML
 on:
   push:
     paths:
-      - 'examples/*.yaml'
+      - 'resources/*.yaml'
 
 jobs:
   codegen:

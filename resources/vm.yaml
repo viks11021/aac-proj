@@ -3,7 +3,7 @@ app:
   region: us-central1
   components:
     - type: compute_instance
-      name: demo-vm
+      name: aac-test-vm
       machine_type: e2-micro
       zone: us-central1-a
       image: debian-cloud/debian-11
