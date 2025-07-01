@@ -10,7 +10,7 @@ app:
 
     - type: sa
       name: demo-service-account
-      display_name: "Demo Service Account"
+      display_name: "Test Service Account"
       roles:
         - roles/storage.admin
         - roles/compute.viewer  
