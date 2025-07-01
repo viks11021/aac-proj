@@ -1,0 +1,35 @@
+name: Generate Terraform from YAML
+
+on:
+  push:
+    paths:
+      - 'examples/*.yaml'
+
+jobs:
+  codegen:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run main.py to generate Terraform and diagram
+      run: python main.py
+
+    - name: Commit and push generated Terraform and diagram
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add output/generated_tf output/architecture.png
+        git commit -m "Auto-generate Terraform and diagram"
+        git push
+      continue-on-error: true

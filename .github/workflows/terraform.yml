@@ -1,0 +1,40 @@
+name: Terraform Deploy
+
+on:
+  push:
+    paths:
+      - 'output/generated_tf/**'
+      - '.github/workflows/terraform.yml'
+
+jobs:
+  terraform:
+    name: 'Apply Terraform'
+    runs-on: ubuntu-latest
+
+    env:
+      GOOGLE_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+
+    - name: Authenticate to GCP
+      run: |
+        echo "${GOOGLE_CREDENTIALS}" > credentials.json
+        gcloud auth activate-service-account --key-file=credentials.json
+        gcloud config set project YOUR_GCP_PROJECT_ID
+
+    - name: Init Terraform
+      working-directory: output/generated_tf
+      run: terraform init
+
+    - name: Plan Terraform
+      working-directory: output/generated_tf
+      run: terraform plan -var-file=terraform.tfvars
+
+    - name: Apply Terraform
+      working-directory: output/generated_tf
+      run: terraform apply -auto-approve -var-file=terraform.tfvars

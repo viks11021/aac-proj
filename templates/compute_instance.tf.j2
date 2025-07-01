@@ -1,0 +1,16 @@
+resource "google_compute_instance" "{{ component.name }}" {
+  name         = "{{ component.name }}"
+  machine_type = "{{ component.machine_type }}"
+  zone         = "{{ component.zone }}"
+
+  boot_disk {
+    initialize_params {
+      image = "{{ component.image }}"
+    }
+  }
+
+  network_interface {
+    network = "default"
+    access_config {}
+  }
+}

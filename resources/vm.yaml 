@@ -1,0 +1,9 @@
+app:
+  name: vm-demo
+  region: us-central1
+  components:
+    - type: compute_instance
+      name: demo-vm
+      machine_type: e2-micro
+      zone: us-central1-a
+      image: debian-cloud/debian-11
