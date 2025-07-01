@@ -11,6 +11,10 @@ jobs:
     name: 'Apply Terraform'
     runs-on: ubuntu-latest
 
+    concurrency:
+      group: terraform-${{ github.ref }}
+      cancel-in-progress: true
+
     env:
       GOOGLE_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
 
