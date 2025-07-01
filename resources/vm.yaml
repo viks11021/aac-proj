@@ -8,7 +8,7 @@ app:
       zone: us-central1-a
       image: debian-cloud/debian-11
 
-    - type: service_account
+    - type: sa
       name: demo-sa
       display_name: "Demo Service Account"
       roles:
