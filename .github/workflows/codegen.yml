@@ -9,9 +9,9 @@ jobs:
   codegen:
     runs-on: ubuntu-latest
 
-    concurrency:
-      group: terraform-${{ github.ref }}
-      cancel-in-progress: true
+    # concurrency:
+    #   group: terraform-${{ github.ref }}
+    #   cancel-in-progress: true
 
     steps:
     - name: Checkout repository
