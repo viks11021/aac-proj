@@ -30,6 +30,8 @@ def generate_diagram(components, filename="output/architecture"):
                 nodes[c['name']] = SQL(c['name'])
             elif c['type'] == 'vpc':
                 nodes[c['name']] = VPC(c['name'])
+            elif c['type'] == 'sa':
+                nodes[c['name']] = sa(c['name'])    
 
         for i in range(len(components) - 1):
             nodes[components[i]['name']] >> nodes[components[i + 1]['name']]

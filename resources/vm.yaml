@@ -9,7 +9,7 @@ app:
       image: debian-cloud/debian-11
 
     - type: sa
-      name: demo-sa
+      name: testing-sa
       display_name: "Demo Service Account"
       roles:
         - roles/storage.admin
